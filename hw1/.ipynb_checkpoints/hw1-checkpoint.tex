@@ -209,22 +209,11 @@ Write a \textbf{formal proof} that the two definitions are equivalent.
                 If R.H.S holds, 
                 then $\exists c \in \mathbb{R}$ and $\exists n_0 \in \{1, 2, 3, \dots\}$
                 such that $f(n) \leq c \cdot g(n)$ for all $n \geq n_0$. 
-                We will now show that $ \exists d \in \mathbb{R}$ such that $\forall n > 0$, $f(n) \leq d \cdot g(n)$. 
 
-                In the case that $\forall n > 0$ $f(n) \leq c \cdot g(n)$ already, then we can choose $d=c$. 
+                Note that for $n < n_0$, it is possible $f(n) > c \cdot g(n)$
 
-                In the case that there exists an $n > 0$ such that $f(n) > c \cdot g(n)$, 
-                let $n_{max}$ be the value of $n$ such that $\frac{f(n)}{g(n)}$ is maximized. 
-                Then $f(n) \leq \frac{f(n_{max})}{g(n_{max})} \cdot g(n)$ for all $n > 0$. 
-                If there exists some $n$ at which $f(n) > \frac{f(n_{max})}{g(n_{max})} \cdot g(n)$, 
-                then we have $\frac{f(n)}{g(n)} > \frac{f(n_{max})}{g(n_{max})}$, which contradicts our choice of $n_{max}$. 
-                
-                We can now choose any $d \geq \frac{f(n_{max})}{g(n_{max})}$ to satisfy $f(n) \leq d \cdot g(n)$ for all $n > 0$. 
-                
-                Therefore, in both cases, there exists some d such that for all $n > 0$, $f(n) \leq \frac{f(n_{max})}{g(n_{max})} \cdot g(n)$
-                This statement is equivalent to the L.H.S. 
+
             }
-
         \end{enumerate}
 
 
@@ -422,7 +411,7 @@ So, in order to compute $F_n$, it suffices to raise this $2 \times 2$ matrix, ca
 \begin{problem}[Fibonacci Implementation] For this problem, you will be asked to implement a function that computes the value of the $n^{th}$ Fibonacci number, and compare its runtime to that of the algorithms seen in class. You can find the questions \href{https://colab.research.google.com/drive/1bsq4NCaGU19B6JKf2e3sqjM4CLIBKhAt}{here}. Create a copy of the document, implement the required code, turn on link sharing, and include a link to your document here.
 \end{problem}
 \solution{
-    See GitHub. 
+    \href{https://colab.research.google.com/drive/1X5UlMcXJd8ICb5Adqpl5xKFv_wYeGEPx?usp=sharing}{colab.research.google.com}
 }
 
 
