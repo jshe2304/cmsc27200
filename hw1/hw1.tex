@@ -1,0 +1,423 @@
+%---------
+% place your email id between the braces so that your homework has a name
+\def\yourname{}
+% -----------------------------------------------------
+\def\duedate{3/25/2024}
+\def\duelocation{via \href{https://www.gradescope.com/courses/753885}{Gradescope}}
+\def\hnumber{1}
+\def\prof{Lorenzo Orecchia}
+\def\course{\href{https://canvas.uchicago.edu/courses/56880}{CMSC 27200 - Spring 2024}}
+%-------------------------------------
+
+\documentclass[10pt]{article}
+\usepackage[colorlinks,urlcolor=blue]{hyperref}
+\usepackage[osf]{mathpazo}
+\usepackage{amsmath,amsfonts,graphicx}
+\usepackage{latexsym}
+\usepackage{subfig}
+\usepackage{algpseudocode}
+\usepackage[shortlabels]{enumitem}
+\usepackage{algorithm}
+\usepackage{listings}
+%\usepackage[top=1in,bottom=1.4in,left=1.5in,right=1.5in,centering]{geometry}
+\usepackage{fullpage}
+\usepackage{color}
+\definecolor{mdb}{rgb}{0.3,0.02,0.02} 
+\definecolor{cit}{rgb}{0.05,0.2,0.45} 
+%\pagestyle{myheadings}
+\markboth{\yourname}{\yourname}
+
+\thispagestyle{empty}
+
+\newenvironment{proof}{\par\noindent{\it Proof.}\hspace*{1em}}{$\Box$\bigskip}
+\newcommand{\qed}{$\Box$}
+\newcommand{\alg}[1]{\mathsf{#1}}
+\newcommand{\handout}{
+   \renewcommand{\thepage}{H\hnumber-\arabic{page}}
+   \noindent
+   \begin{center}
+      \vbox{
+    \hbox to \columnwidth {\sc{\course} --- \prof \hfill}
+    \vspace{-2mm}
+    \hbox to \columnwidth {\sc due \MakeLowercase{\duedate} \duelocation\hfill {\Huge\color{mdb}H\hnumber.\yourname}}
+      }
+   \end{center}
+   \vspace*{2mm}
+}
+\newcommand{\solution}[1]{
+\vspace{2mm}
+
+\noindent Collaborators:
+
+\vspace{5mm}
+
+\medskip\noindent{\color{cit}\textbf{Solution:} #1}}
+
+\newcommand{\bit}[1]{\{0,1\}^{ #1 }}
+\newcommand{\extraspace}{\medskip\noindent{\color{cit} Extra space for your solution}\newpage}
+%\dontprintsemicolon
+%\linesnumbered=
+\newtheorem{problem}{\sc\color{cit}Problem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}{Definition}
+\newtheorem{claim}{Claim}
+
+
+\begin{document}
+\handout
+\begin{itemize}
+\item The assignment is due at Gradescope on \duedate.
+
+\item A LaTeX template will be provided for each homework. You are strongly encouraged to type your homework into this template using \LaTeX.  If you are writing by hand, please fill in the solutions in this template, inserting additional sheets as necessary. This will help facilitate the grading.
+
+\item You are permitted to discuss the problems with up to 2 other students in the class (per problem); however, {\em you must write up your own solutions, in your own words}. Do not submit anything you cannot explain. If you do collaborate with any of the other students on any problem, please list all your collaborators in the appropriate spaces.
+
+\item Similarly, please list any other source you have used for each problem, including other textbooks or websites.
+
+\item {\em Show your work.} Answers without justification will be given little credit.
+
+\item Your homework is \textit{resubmittable}. Please refer to the course syllabus on Canvas for a more detailed description of this. For any problem that you have not changed from your last submission, please make sure to indicate this in your submission to help our graders grade faster. 
+
+\end{itemize}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{problem}[Syllabus Reading Comprehension] The following questions all pertain to course policy. None are trick questions, and all can be found in the syllabus on Canvas, or in the policies on the first page of this assignment. For this question, please enter your answer directly  as text in Gradescope under HW1 - Problem 1.
+\end{problem}
+
+\begin{enumerate}
+    \item[(a)] You're having a tough first week back, and you want to turn in this homework assignment four days late. What point penalty will you incur on your submission? What benefits exist for turning your assignment in on time?
+    \item[(b)] You got an N on problem 3, but an E on everything else. You read the feedback, went to OH, and have a better solution now. You want to resubmit it, but you've made no changes to any of your other solutions. How should you format your solution for resubmission in Gradescope?
+\end{enumerate}
+
+\solution{
+    See Gradescope. 
+}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{problem}[Practice with Big O.] For this problem, you may want to review the definition of Big $O$, Big $\Omega$ and Big $\Theta$ [see DPV 0.3]. Helpful resources can also be found on Canvas. In each of the following situations, indicate whether $f = O(g)$, or $f = \Omega(g)$, or both (in which case $f = \Theta(g)$), and \textbf{give a brief explanation} for each answer.
+\end{problem}
+
+\begin{enumerate}[(a)]
+    \item $f(n) = \sum_{i=1}^n i^k$ and $g(n) = n^{k+1}$ for constant $k > 0.$
+    \item $f(n) = \sum_{i=1}^n i^k$ and $g(n) = n^{k+1}$ for $k \in \Theta(\log n).$
+    \item $f(n) = \binom{n}{5}$  and $g(n) = \sqrt{n}^{3\log_2 8}$
+    \item $f(n) = 3^n$ and $g(n) = \sum_{i=1}^n2^i$
+    \item $f(n) = \log (n!)$ and $g(n) = n \log n$
+    \item $f(m,n) = (n+m)^2$ and $g(m,n) = n^2 + m^2$
+\end{enumerate}
+
+\solution{
+    \begin{enumerate}[(a)]
+        \item {
+            $ f = O(g) $ \\
+            
+            $ f(n) = 1^k + 2^k + \dots + n^k $ \\
+            $ g(n) = n^k + n^k + \dots + n^k $ \\
+            Therefore $f(n) \leq g(n)$ since the ith term of $g(n)$ is greater or equal to the ith term in $f(n)$. 
+        }
+        \item {
+            $ f = O(g) $ \\
+
+            For some $c$, \\
+            $ f(n) = 1^{c\log(n)} + 2^{c\log(n)} + \dots + n^{c\log(n)} $ \\
+            $ g(n) = n^{c\log(n)} + n^{c\log(n)} + \dots + n^{c\log(n)} $ \\
+            Therefore $ f(n) \leq g(n) $ since the ith term of $g(n)$ is greater or equal to the ith term in $f(n)$. 
+        }
+        \item {
+            $ f = \Omega(g)$ \\
+
+            $ f(n) = \frac{n!}{(n - 5)! 5!} $ \\
+            $ g(n) = n^{4.5} $ \\
+            Factorial grows faster than polynomial
+        }
+        \item {
+            $ f = \Omega(g) $ \\
+
+            $ f(n) = 3^n $ \\
+            $ g(n) = 2^1 + 2^2 + \dots + 2^n $ \\
+            $f(n)$ grows faster than the highest order term of $g(n)$
+        }
+        \item {
+            $ f = O(g) $ \\
+
+            $ f(n) = \log(1) + \log(2) + \dots + \log(n) $ \\
+            $ g(n) = \log(n) + \log(n) + \dots + \log(n) $ \\
+            ith term of $f(n)$ is less than or equal to ith term of $g(n)$
+        }
+        \item {
+            $ f = \Omega(n) $ \\
+
+            $ f(m, n) = n^2 + 2mn + m^2 $ \\
+            $ g(m, n) = n^2 + m^2 $ \\
+        }
+
+    \end{enumerate}
+}
+
+\newpage
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{problem}["Conflicting" Definitions]
+Surprisingly, our DPV textbook and the KT textbook provide different definitions for big-O notation. For $f,g: \mathbb{N}_{>0} \to \mathbb{R}_{> 0},$ they are:
+\begin{itemize}
+    \item DPV: $f(n) = O(g(n)) \iff \exists c \in \mathbb{R}, \: \forall n \in \mathbb{N}_{>0},\;  f(n) \leq c \cdot g(n)$ 
+    \item KT: $f(n) = O(g(n)) \iff \exists c \in \mathbb{R}, \: \exists n_0 \in \mathbb{N}_{>0}, \: \forall n \geq n_0, \quad f(n) \leq c \cdot g(n).$
+\end{itemize}
+Write a \textbf{formal proof} that the two definitions are equivalent.
+
+\end{problem}
+
+\solution{
+
+    \begin{proof}
+
+        By transitivity, DPV is equivalent to KT if:
+
+        \[
+            \exists c \in \mathbb{R}, \: \forall n \in \mathbb{N}_{>0},\;  f(n) \leq c \cdot g(n)
+            \iff
+            \exists c \in \mathbb{R}, \: \exists n_0 \in \mathbb{N}_{>0}, \: \forall n \geq n_0, \: f(n) \leq c \cdot g(n)
+        \]
+
+        To prove this, we prove the following:
+        
+        \begin{enumerate}
+            \item {
+                \textbf{L.H.S $\implies$ R.H.S}
+
+                If L.H.S holds, then $\exists c \in \mathbb{R}$ such that $f(n) \leq c \cdot g(n)$ for all $n \in \{1, 2, 3, \dots\}$. 
+                The R.H.S follows by choosing $n_0=1$, in which case it is an equivalent statement to the L.H.S. 
+            }
+            \item {
+                \textbf{L.H.S $\impliedby$ R.H.S}
+
+                If R.H.S holds, 
+                then $\exists c \in \mathbb{R}$ and $\exists n_0 \in \{1, 2, 3, \dots\}$
+                such that $f(n) \leq c \cdot g(n)$ for all $n \geq n_0$. 
+
+                Note that for $n < n_0$, it is possible $f(n) > c \cdot g(n)$
+
+
+            }
+        \end{enumerate}
+
+
+        
+    \end{proof}
+}
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}[Faster Fibonacci] This exercise is similar to 0.4 from [DPV]. Recall that the Fibonacci sequence is defined recursively by:
+\[
+    F_0 = 1,\quad F_1=1,\quad F_{n}= F_{n-1}+F_{n-2}.
+\]
+Is there a faster way to compute the $n^{th}$ Fibonacci number than by \emph{fib2} (DPV, pg. 13)? One idea involves matrices.
+
+If you are not already familiar with matrix multiplication, you will need to learn just a bit of it here. For this problem, you should familiarize yourself with the following:
+\begin{itemize}
+    \item \href{https://www.khanacademy.org/math/algebra-home/alg-matrices/alg-representing-systems-with-matrices/a/representing-systems-with-matrices}{How to convert a linear system to a matrix equation}
+    \item \href{https://www.khanacademy.org/math/precalculus/x9e81a4f98389efdf:matrices/x9e81a4f98389efdf:multiplying-matrices-by-matrices/a/multiplying-matrices}{How to multiply matrices}
+    \item Know that matrix multiplication is associative.
+\end{itemize}
+
+
+
+We start by writing the equations $F_1 = F_1$ and $F_2 = F_0 + F_1$ in matrix notation:
+\[
+    \begin{pmatrix} F_1 \\ F_2\end{pmatrix} = \begin{pmatrix} 0 & 1\\ 1& 1\end{pmatrix}\cdot \begin{pmatrix} F_0 \\ F_1\end{pmatrix}
+\]
+Similarly:
+
+\[
+    \begin{pmatrix} F_2 \\ F_3\end{pmatrix} = \begin{pmatrix} 0 & 1\\ 1& 1\end{pmatrix}\cdot \begin{pmatrix} F_1 \\ F_2\end{pmatrix}= \begin{pmatrix} 0 & 1\\ 1& 1\end{pmatrix}^2\cdot \begin{pmatrix} F_0 \\ F_1\end{pmatrix}
+\]
+and in general:
+\[
+    \begin{pmatrix} F_n \\ F_{n+1}\end{pmatrix} = \begin{pmatrix} 0 & 1\\ 1& 1\end{pmatrix}^n\cdot \begin{pmatrix} F_0 \\ F_1\end{pmatrix}.
+\]
+So, in order to compute $F_n$, it suffices to raise this $2 \times 2$ matrix, call it $X$, to the $n^{th}$ power.
+
+\begin{enumerate}
+    \item[(a)] Show that two $2 \times 2$ matrices can be multiplied using $4$ additions and $8$ multiplications.
+    \item[(b)] Give an algorithm to compute $X^{n}$ using only $O(\log n)$ matrix multiplications. You should provide pseudocode for your algorithm, and give a \textbf{formal proof} that it works correctly and only uses $O(\log n)$ matrix multiplications (Hint: Think about computing $X^8$). 
+    \item[(c)] We name the algorithm from part (b) \emph{fib3}. \textbf{Sketch} a proof that all intermediate results of \emph{fib3} are $O(n)$ bits long.
+    \item[(d)] Let $M(n)$ be the running time of an algorithm for multiplying $n$-bit numbers, and assume that $M(n) = O(n^2)$ (the school method for multiplication, in Chapter 1 of DPV, achieves this). \textbf{Sketch} a proof that the running time of \emph{fib3} is $O(M (n) log n)$.
+    \item[(e)] \textbf{Sketch} a proof that the running time of \emph{fib3} is $O(M (n))$. (Hint: The lengths of the numbers being multiplied get doubled with every squaring.)
+\end{enumerate}
+\end{problem}
+\solution{
+
+    \begin{enumerate} [(a)]
+
+        \item {
+            Matrix multiplication is defined as:
+            \[
+                \begin{pmatrix} a & b \\ c & d\end{pmatrix} \cdot \begin{pmatrix} e & f \\ g & h\end{pmatrix} = 
+                \begin{pmatrix} ae + bg & af + bh \\ ce + dg & cf + dh\end{pmatrix}
+            \]
+            In this expression there are 8 unique multiplication operations and 4 unique addition operations. 
+        }
+
+        \newpage
+
+        \item {
+            Consider the algorithm: 
+            \begin{algorithm}
+                \caption{Recursive algorithm to compute $X^n$ in logarithmic time}
+                \begin{algorithmic}[1]
+                    \Statex \textbf{pow($X$, $n$)}
+                    \Statex \textbf{Input:} $X \in \mathcal{M}_{2 \times 2}$, $n \in \mathbb{N}$
+                    \Statex \textbf{Output:} $Y \in \mathcal{M}_{2 \times 2}$
+                    
+                    \State \textbf{if $n=0$ then return $I_2$}
+                    \State \textbf{if $n=1$ then return $X$}
+
+                    \State $ X_{1/2} \gets pow(X, \lfloor \frac{n}{2} \rfloor) $
+
+                    \State \textbf{if} $n$ even \textbf{then return}  $X_{1/2} \cdot X_{1/2}$
+                    \State \textbf{if} $n$ odd \textbf{then return}  $X_{1/2} \cdot X_{1/2} \cdot {X}$
+
+                \end{algorithmic}
+            \end{algorithm}
+
+            \begin{proof}
+                
+                To prove correctness, use strong induction on $n$. 
+
+                \begin{itemize}
+                    \item {
+                        \textbf{Base Case}
+
+                        For $n=0$, $I_2$ is returned.
+
+                        For $n=1$, $X$ is returned. 
+                    }
+
+                    \item {
+                        \textbf{Inductive Case}
+                        
+                        Suppose the algorithm is correct for all $n \in \{0, 1, \dots, k-1\}$. 
+        
+                        Since $k > 1$, the algorithm computes $X^{\lfloor \frac{k}{2} \rfloor}$ (Line 3). 
+                        By the inductive hypothesis, this value is correctly computed because ${\lfloor \frac{k}{2} \rfloor} \le k-1$ . 
+        
+                        If $k$ is even, $X^{\lfloor \frac{k}{2} \rfloor} = X^{\frac{k}{2}}$ and $X^{\frac{k}{2}} \cdot X^{\frac{k}{2}} = X^k$ is returned (Line 4). 
+        
+                        If $k$ is odd, $X^{\lfloor \frac{k}{2} \rfloor} = X^{\frac{k - 1}{2}}$ and $X^{\frac{k-1}{2}} \cdot X^{\frac{k-1}{2}} \cdot X = X^k$ is returned (Line 5). 
+                    }
+                \end{itemize}
+            \end{proof}
+
+            \begin{proof}
+                
+                We want to prove runtime is $O(\log n)$ with respect to matrix multiplication (matmul). 
+
+                Note the algorithm is recursive. 
+                Each call returns if $n=0$ or $n=1$, or recursively calls $pow(X, \lfloor \frac{n}{2} \rfloor)$. 
+                The values of $n$ up the call stack thus go as $n, \lfloor \frac{n}{2} \rfloor, \dots, 1$. 
+                Therefore the number of calls goes as $O(\log n)$. 
+                
+                By inspection, the number of matmuls per call is constant and independent of $n$. 
+
+                Therefore the whole algorithm is $O(\log n)$ with respect to matmul operations. 
+
+            \end{proof}
+        }
+
+        \item {
+            \begin{proof}
+
+                All intermediate results of fib3 are $2 \times 2$ matrices composed of 4 integers. 
+                To prove all such matrices have $O(n)$ bit complexity, use induction on $n$. 
+                
+                \begin{itemize}
+                    \item {
+                        \textbf{Base Case}
+
+                        The bit complexity grows proportional to n between $n=1$, which requires $1$ bit, and $n=2$, which requires $2$ bits.
+                    }
+                    \item {
+                        \textbf{Inductive Case}
+
+                        Suppose the bit complexities of the results for $n \in \{1, \dots, k-1\}$ are proportional to $n$. 
+                        The result for $n=k$ is computed using the result from $n = \lfloor \frac{k}{2} \rfloor$. 
+                        The computation requires multiplying $2$ $\lfloor \frac{k}{2} \rfloor$-bit integers to get a $k$-bit integer, in the worst case. 
+
+                        Therefore the bit complexity is $O(n)$. 
+                    }
+                \end{itemize}
+
+            \end{proof}
+        }
+
+        \item {
+            \begin{proof}
+
+                Recall from (b) that the number of calls goes as $O(\log n)$ and the number of matmuls per call is constant. 
+
+                Also recall from (c) that each call must multiply $2$ $\lfloor \frac{n}{2} \rfloor$-bit integers, in the worst case. 
+                This operation is $O(n^2)$. There are a constant number of these operations each call. 
+
+                Therefore, the whole algorithm is $O(M(n)\log n)$ with respect to bit operations. 
+
+            \end{proof}
+        }
+
+        \item {
+            \begin{proof}
+
+                Recall from (c) that each call has bit complexity $O(n)$.  
+                Each call performs matmuls that require a constant number of integer multiplications, which are $O(n^2)$. 
+                Since $n$ roughly halves going up the call stack, the runtimes thus go as $ O(n^2), O(\frac{n^2}{4}), \dots, O(1) $
+ 
+                Recall from (b) that there are $O(\log n)$ calls, so the whole algorithm is $O(\sum_{i=0}^{\log n} \frac{n^2}{2^{2i}})$. 
+                As $n$ grows, the number of addends grows logarithmically. 
+                However, the denominators grow exponentially, strongly suppressing the additional terms. 
+                Therefore only the first few terms, which go as $O(n^2)$ are relevant. 
+                The whole algorithm is thus $O(n^2)$. 
+                
+
+            \end{proof}
+        }
+
+    \end{enumerate}
+}
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{problem}[Fibonacci Implementation] For this problem, you will be asked to implement a function that computes the value of the $n^{th}$ Fibonacci number, and compare its runtime to that of the algorithms seen in class. You can find the questions \href{https://colab.research.google.com/drive/1bsq4NCaGU19B6JKf2e3sqjM4CLIBKhAt}{here}. Create a copy of the document, implement the required code, turn on link sharing, and include a link to your document here.
+\end{problem}
+\solution{
+    \href{https://colab.research.google.com/drive/1X5UlMcXJd8ICb5Adqpl5xKFv_wYeGEPx?usp=sharing}{colab.research.google.com}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\end{document}
