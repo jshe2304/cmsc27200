@@ -121,38 +121,38 @@
         \item {
             $ f = O(g) $ \\
             
-            $ f(n) = 1^k + 2^k + \dots + n^k $ \\
-            $ g(n) = n^k + n^k + \dots + n^k $ \\
-            Therefore $f(n) \leq g(n)$ since the ith term of $g(n)$ is greater or equal to the ith term in $f(n)$. 
+            $ f(n) = \sum_{i=1}^{n} i^k $ \\
+            $ g(n) = \sum_{i=1}^{n} n^k $ \\
+            In $f(n)$, $i \leq n$. 
         }
         \item {
             $ f = O(g) $ \\
 
             For some $c$, \\
-            $ f(n) = 1^{c\log(n)} + 2^{c\log(n)} + \dots + n^{c\log(n)} $ \\
-            $ g(n) = n^{c\log(n)} + n^{c\log(n)} + \dots + n^{c\log(n)} $ \\
-            Therefore $ f(n) \leq g(n) $ since the ith term of $g(n)$ is greater or equal to the ith term in $f(n)$. 
+            $ f(n) = \sum_{i=1}^{n} i^{c\log n} $ \\
+            $ g(n) = \sum_{i=1}^{n} n^{c\log n} $ \\
+            In $f(n)$, $i \leq n$. 
         }
         \item {
             $ f = \Omega(g)$ \\
 
-            $ f(n) = \frac{n!}{(n - 5)! 5!} $ \\
+            $ f(n) = \frac{n (n-1) (n-2) (n-3) (n-4)}{ 5!} $ \\
             $ g(n) = n^{4.5} $ \\
-            Factorial grows faster than polynomial
+            $f(n)$ has polynomial order of $5 > 4.5$. 
         }
         \item {
             $ f = \Omega(g) $ \\
 
             $ f(n) = 3^n $ \\
-            $ g(n) = 2^1 + 2^2 + \dots + 2^n $ \\
-            $f(n)$ grows faster than the highest order term of $g(n)$
+            $ g(n) = 2^{n+1} - 1 $ \\
+            $f(n)$ has a greater exponential base than $g(n)$. 
         }
         \item {
             $ f = O(g) $ \\
 
-            $ f(n) = \log(1) + \log(2) + \dots + \log(n) $ \\
-            $ g(n) = \log(n) + \log(n) + \dots + \log(n) $ \\
-            ith term of $f(n)$ is less than or equal to ith term of $g(n)$
+            $ f(n) = \sum_{i=1}^{n} \log i $ \\
+            $ g(n) = \sum_{i=1}^{n} \log n $ \\
+            In $f(n)$, $i \leq n$ and $\log$ is monotone. 
         }
         \item {
             $ f = \Omega(n) $ \\

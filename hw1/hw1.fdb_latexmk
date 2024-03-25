@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1711314372.05896 "/Users/jshe/School/year-2/cs-272/hw1.tex" "hw1.pdf" "hw1" 1711314373.01791 0
-  "/Users/jshe/School/year-2/cs-272/hw1.tex" 1711314371.83111 19188 555037b412a555d46e92493ae5b18f06 ""
+["pdflatex"] 1711325743.61648 "/Users/jshe/School/cmsc272/hw1/hw1.tex" "hw1.pdf" "hw1" 1711325744.58056 0
+  "/Users/jshe/School/cmsc272/hw1/hw1.tex" 1711325743.3985 18925 3ebff24f90b21d85387f722f641b1262 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2024/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/adobe/palatino/pplb8r.tfm" 1136768653 2532 9ad73cf4dd2173a847f2a5f5608e0b9a ""
@@ -139,9 +139,9 @@
   "/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1711122559.97506 5467645 128b85b7cde5f5edc5cb7f1dd7ff8736 ""
   "/usr/local/texlive/2024/texmf-var/web2c/pdftex/pdflatex.fmt" 1711122429 8221435 87475a11a0e16feece63157929773497 ""
   "/usr/local/texlive/2024/texmf.cnf" 1710266656 577 e590dabc9e28c5b61546e15f63eebcdf ""
-  "hw1.aux" 1711314372.91517 338 748bb656954506dd18ada29de67b6553 "pdflatex"
-  "hw1.out" 1711314372.61126 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "hw1.tex" 1711314371.83111 19188 555037b412a555d46e92493ae5b18f06 ""
+  "hw1.aux" 1711325744.47654 338 748bb656954506dd18ada29de67b6553 "pdflatex"
+  "hw1.out" 1711325744.1753 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "hw1.tex" 1711325743.3985 18925 3ebff24f90b21d85387f722f641b1262 ""
   (generated)
   "hw1.aux"
   "hw1.log"
