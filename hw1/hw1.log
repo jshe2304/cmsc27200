@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.3.22)  24 MAR 2024 19:15
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.3.22)  25 MAR 2024 16:31
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -441,46 +441,41 @@ File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 ) [1
 
 {/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/base/8r.enc}] [2]
-Underfull \hbox (badness 10000) in paragraph at lines 165--165
+Underfull \hbox (badness 10000) in paragraph at lines 180--180
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 165--165
+Underfull \hbox (badness 10000) in paragraph at lines 180--180
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 165--165
+Underfull \hbox (badness 10000) in paragraph at lines 180--180
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 165--165
+Underfull \hbox (badness 10000) in paragraph at lines 180--180
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 165--165
+Underfull \hbox (badness 10000) in paragraph at lines 180--180
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 165--165
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 165--165
+[3]
+Underfull \hbox (badness 10000) in paragraph at lines 180--180
 
  []
 
-[3] [4]
-LaTeX Font Info:    Trying to load font information for U+fplmbb on input line 176.
+[4]
+LaTeX Font Info:    Trying to load font information for U+fplmbb on input line 191.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/psnfss/ufplmbb.fd
 File: ufplmbb.fd 2003/10/30 Fontinst v1.914 font definitions for U/fplmbb.
 ) [5] [6]
-Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on input line 414.
+Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on input line 429.
  [7] [8] [9] (./hw1.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
@@ -490,15 +485,15 @@ Package rerunfilecheck Info: File `hw1.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 13456 strings out of 474116
- 212802 string characters out of 5743682
+ 13457 strings out of 474116
+ 212807 string characters out of 5743682
  1942187 words of memory out of 5000000
  35559 multiletter control sequences out of 15000+600000
- 587679 words of font info for 110 fonts, out of 8000000 for 9000
+ 587979 words of font info for 111 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,7n,79p,541b,620s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/fpl/fplbj8a.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/mathpazo/fplmbb.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/mathpazo/fplmr.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/fpl/fplrc8a.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/fpl/fplrij8a.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/latxfont/lasy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/urw/palatino/uplbi8a.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on hw1.pdf (9 pages, 179218 bytes).
+Output written on hw1.pdf (9 pages, 180797 bytes).
 PDF statistics:
  155 PDF objects out of 1000 (max. 8388607)
  114 compressed objects within 2 object streams

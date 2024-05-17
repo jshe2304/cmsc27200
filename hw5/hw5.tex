@@ -1,0 +1,261 @@
+%---------
+% place your email id between the braces so that your homework has a name
+\def\yourname{jshe}
+% -----------------------------------------------------
+\def\duedate{4/19/24}
+\def\duelocation{via \href{https://www.gradescope.com/courses/753885}{Gradescope}}
+\def\hnumber{5}
+\def\prof{Lorenzo Orecchia}
+\def\course{\href{https://canvas.uchicago.edu/courses/56880}{CMSC 27200 - Spring 2024}}
+%-------------------------------------
+
+\documentclass[10pt]{article}
+\usepackage[colorlinks,urlcolor=blue]{hyperref}
+\usepackage[osf]{mathpazo}
+\usepackage{amsmath,amsfonts,graphicx}
+\usepackage{latexsym}
+%\usepackage{subfig}
+\usepackage{algpseudocode}
+\usepackage[shortlabels]{enumitem}
+\usepackage{algorithm}
+\usepackage{listings}
+
+\usepackage{tkz-graph}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,arrows}
+\usepackage{qtree}
+\usepackage{tikz-qtree}
+\usepackage{subcaption}
+\usepackage{float}   
+
+%\usepackage[top=1in,bottom=1.4in,left=1.5in,right=1.5in,centering]{geometry}
+\usepackage{fullpage}
+\usepackage{color}
+\definecolor{mdb}{rgb}{0.3,0.02,0.02} 
+\definecolor{cit}{rgb}{0.05,0.2,0.45}
+\usepackage{wrapfig}
+%\pagestyle{myheadings}
+\markboth{\yourname}{\yourname}
+
+\thispagestyle{empty}
+
+\newenvironment{proof}{\par\noindent{\it Proof.}\hspace*{1em}}{$\Box$\bigskip}
+\newcommand{\qed}{$\Box$}
+\newcommand{\alg}[1]{\mathsf{#1}}
+\newcommand{\handout}{
+   \renewcommand{\thepage}{H\hnumber-\arabic{page}}
+   \noindent
+   \begin{center}
+      \vbox{
+    \hbox to \columnwidth {\sc{\course} --- \prof \hfill}
+    \vspace{-2mm}
+    \hbox to \columnwidth {\sc due \MakeLowercase{\duedate} \duelocation\hfill {\Huge\color{mdb}H\hnumber.\yourname}}
+      }
+   \end{center}
+   \vspace*{2mm}
+}
+\newcommand{\solution}[1]{
+\vspace{2mm}
+
+\noindent Collaborators:
+
+\vspace{5mm}
+
+\medskip\noindent{\color{cit}\textbf{Solution:} #1}}
+
+\newcommand{\bit}[1]{\{0,1\}^{ #1 }}
+\newcommand{\extraspace}{\medskip\noindent{\color{cit} Extra space for your solution}\newpage}
+%\dontprintsemicolon
+%\linesnumbered=
+\newtheorem{problem}{\sc\color{cit}Problem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}{Definition}
+\newtheorem{claim}{Claim}
+
+
+\begin{document}
+\handout
+\begin{itemize}
+\item The assignment is due at Gradescope on \duedate.
+
+\item A LaTeX template will be provided for each homework. You are strongly encouraged to type your homework into this template using \LaTeX.  If you are writing by hand, please fill in the solutions in this template, inserting additional sheets as necessary. This will help facilitate the grading.
+
+\item You are permitted to discuss the problems with up to 2 other students in the class (per problem); however, {\em you must write up your own solutions, in your own words}. Do not submit anything you cannot explain. If you do collaborate with any of the other students on any problem, please list all your collaborators in the appropriate spaces.
+
+\item Similarly, please list any other source you have used for each problem, including other textbooks or websites.
+
+\item {\em Show your work.} Answers without justification will be given little credit.
+
+\item Your homework is \textit{resubmittable}. Please refer to the course syllabus on Canvas for a more detailed description of this. For any problem that you have not changed from your last submission, please make sure to indicate this in your submission to help our graders grade faster. 
+
+\item Is anyone still reading these?
+
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% QUESTION 1
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\begin{problem}[Midterm True / False] 
+For the following statements, state whether the statement is true or false. If the answer is true, provide a brief explanation why; if the answer is false, provide a counter example.
+\begin{enumerate}[(a)]
+\item For any pair of functions $f(n), g(n)$, if $f(n) = O\big( g(n) \big)$, then $\log\big( f(n) \big) = O\big( \log ( g(n)) \big)$.
+
+\item For any pair of functions $f(n), g(n)$, if $f(n) = \Omega\big( g(n) \big)$, then $\log\big( f(n) \big) = \Omega\big( \log( g(n)) \big)$.
+
+\item Let $\mathcal{A}$ be a divide-and-conquer algorithm which takes an input of size $n$, and recursively calls itself. In a single call, it recursively calls itself 8 times, on inputs of size $n / 2$. Suppose the work done outside of the recursion (i.e. the merging step) takes time $O(n^d)$ for some constant $d$. For any $d \geq 2$, the running time of the algorithm can be then be bounded by $O\big( n^d \big)$.
+
+\item Every fourth root of unity is also an eighth root of unit.
+
+\item Every DAG has at least one source and one sink vertex.
+
+\item Every directed graph with at least one source, and one sink will be a DAG.
+
+\item Given any graph $G = (V, E)$ with edge weights $w_e$, Dijkstra's algorithm can be used to find the shortest path between any two vertices $s, t \in V$, even if $G$ has negative weight.
+\end{enumerate}
+    
+\end{problem}
+
+\begin{solution}
+
+    \begin{enumerate}[(a)]
+        \item {
+            False. 
+
+            Consider $f=2$ and $g = 1$. 
+            $f = O(g)$ because $2 \leq 2 \cdot 1$. 
+
+            However, $\log f \neq O(\log g)$ because $\log f = 1$,  
+            $\log g = 0$, and no $c > 0$ exists such that $1 \leq c \cdot 0$. 
+        }
+        \item {
+            False. 
+
+            Consider $f=1$ and $g=2$. 
+            $f = \Omega(g)$ because $1 \geq \frac{1}{2} \cdot 2$. 
+
+            However, $\log f \neq \Omega(\log g)$ because $\log f = 0$,  
+            $\log g = 1$, and no $c > 0$ exists such that $0 \geq c \cdot 1$. 
+        }
+        \item {
+            False
+
+            $T(n) = 
+            \begin{cases}
+                8 \cdot T(\frac{n}{2}) + O(n^d) & n > 1 \\
+                1 & n = 1
+            \end{cases}
+            $
+
+            By the Master Theorem, 
+            $\displaystyle T(n) = O(n^d \cdot \sum_{k=0}^{\log n} (\frac{8}{2^d})^k)$. 
+
+            In the case $d=2$, $\displaystyle \frac{8}{2^d} > 1$ so $T(n) = O(n^{\log 8}) = O(n^3)$
+        }
+        \item {
+            True. 
+            
+            The eighth root of unity must be a $\omega_8$ such that $\omega_8^8 = 1$. 
+            
+            Let $\omega_4$ be the fourth root of unity such that $\omega_4^4 = 1$. 
+            Then $\omega_4^8 = (\omega_4^4)^2 = 1^2 = 1$. 
+            So  $\omega_4^4$ satisfies the definition of an eigth root of unity. 
+        }
+        \item {
+            Assume for contradiction there exists a DAG with no source. 
+            The path created by backtracing inbound edges of an arbitrary vertex will then be infinite. 
+            But on a finite graph this implies a cycle. 
+
+            Assume for contradiction there exists a DAG with no sink. 
+            The path created by following outbound edges of an arbitrary vertex will then be infinite. 
+            But on a finite graph this implies a cycle. 
+        }
+        \item {
+            False. See counterexample:
+
+            \begin{tikzpicture}[node distance={20mm}, thick,main/.style={circle, thick,draw,font=\sffamily\bfseries}, ar/.style={-{Stealth[scale=1.2]}}]
+                \node[main] (1) {$A$};
+                \node[main] (2) [right of=1]{$B$};
+                \node[main] (3) [right of=2]{$C$};
+                \node[main] (4) [below left of=2]{$D$};
+                \node[main] (5) [below right of=2]{$E$};
+                
+                \draw[ar] (1) -- (2);
+                \draw[ar] (2) -- (3);
+                \draw[ar] (2) -- (4);
+                \draw[ar] (4) -- (5);
+                \draw[ar] (5) -- (2);
+            \end{tikzpicture}
+        }
+        \item {
+            False. Dijkstra's algorithm breaks on negative weights. 
+        }
+    \end{enumerate}
+
+\end{solution}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% QUESTION 2
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\newpage
+\begin{problem}
+    Show the running of Dijkstra's algorithm for finding the shortest distance from $A$ to all other vertices in the graph from Figure~\ref{fig:dijkstra-directed}. You should show the updated distance estimates to all the vertices (i.e., the key of the vertex in the priority queue) after each time a vertex is extracted from the priority queue in the algorithm. (Fill in the following table with the distances from $A$ to all other vertices. Each row represents the distances after one more vertex is removed from the queue.)
+
+    \begin{figure}[h]
+        \centering
+        \begin{tikzpicture}[node distance={20mm}, thick,main/.style={circle, thick,draw,font=\sffamily\bfseries}, ar/.style={-{Stealth[scale=1.2]}}]
+          \node[main] (1) {$G$};
+          \node[main] (2) [above left of=1]{$A$};
+          \node[main] (3) [above right of=1]{$B$};
+          \node[main] (4) [below right of=3]{$C$};
+          \node[main] (5) [below left of=4]{$D$};
+          \node[main] (6) [below left of=1]{$E$};
+          \node[main] (7) [below left of=2]{$F$};
+          
+          \draw[ar] (1) -- (2) node [at start, xshift=-0.1cm, yshift=0.4cm]{$2$};
+          \draw[ar] (1) -- (6) node [at start, xshift=-0.5cm, yshift=-0.2cm]{$5$};
+          \draw[ar] (1) -- (7) node [at start, xshift=-1.0cm, yshift=0.3cm]{$6$};
+          \draw[ar] (2) -- (3) node [at start, xshift=1.0cm, yshift=0.2cm]{$2$};
+          \draw[ar] (3) -- (4) node [at start, xshift=0.6cm, yshift=-0.2cm]{$3$};
+          \draw[ar] (4) -- (2) node [at start, xshift=-1.5cm, yshift=0.7cm]{$4$};
+          \draw[ar] (4) -- (5) node [at end, xshift=0.6cm, yshift=0.2cm]{$4$};
+          \draw[ar] (5) -- (1) node [at start, xshift=-0.2cm, yshift=0.5cm]{$1$};
+          \draw[ar] (5) -- (6) node [at start, xshift=-0.9cm, yshift=-0.3cm]{$5$};
+          \draw[ar] (6) -- (7) node [at start, xshift=-0.6cm, yshift=0.2cm]{$3$};;
+          \draw[ar] (7) -- (2) node [at end, xshift=-0.6cm, yshift=-0.2cm]{$5$};;
+        \end{tikzpicture}
+        \caption{A directed weighted graph $G$.}
+        \label{fig:dijkstra-directed}
+    \end{figure}
+
+        
+    \begin{center}
+    \begin{tabular}{|c|c|c|c|c|c|c|c|}
+    \hline
+         Key in Queue: & A & B & C & D & E & F & G\\
+         \hline 
+         Step 1: - & \;\text{ $0$ }\; & \;$\infty$\; & \;$\infty$\; & \;$\infty$\; & \;$\infty$\; & \;$\infty$\; & \;$\infty$\;\\
+         \hline
+         Step 2: A & \;\text{ $0$ }\; & \;$2$\; & \;$\infty$\; & \;$\infty$\; & \;$\infty$\; & \;$\infty$\; & \;$\infty$\;\\
+         \hline
+         Step 3: B & \;\text{ $0$ }\; & \;$2$\; & \;$5$\; & \;$\infty$\; & \;$\infty$\; & \;$\infty$\; & \;$\infty$\;\\
+         \hline
+         Step 4: C & \;\text{ $0$ }\; & \;$2$\; & \;$5$\; & \;$9$\; & \;$\infty$\; & \;$\infty$\; & \;$\infty$\;\\
+         \hline
+         Step 5: D & \;\text{ $0$ }\; & \;$2$\; & \;$5$\; & \;$9$\; & \;$14$\; & \;$\infty$\; & \;$10$\;\\
+         \hline
+         Step 6: G & \;\text{ $0$ }\; & \;$2$\; & \;$5$\; & \;$9$\; & \;$14$\; & \;$16$\; & \;$10$\;\\
+         \hline
+         Step 7: E & \;\text{ $0$ }\; & \;$2$\; & \;$5$\; & \;$9$\; & \;$14$\; & \;$16$\; & \;$10$\;\\
+         \hline
+         Step 8: F & \;\text{ $0$ }\; & \;$2$\; & \;$5$\; & \;$9$\; & \;$14$\; & \;$16$\; & \;$10$\;\\
+         \hline
+    \end{tabular}
+\end{center}
+\end{problem}
+
+\end{document}

@@ -1,0 +1,459 @@
+%---------
+% place your email id between the braces so that your homework has a name
+\def\yourname{}
+% -----------------------------------------------------
+\def\duedate{4/5/24}
+\def\duelocation{via \href{https://www.gradescope.com/courses/753885}{Gradescope}}
+\def\hnumber{3}
+\def\prof{Lorenzo Orecchia}
+\def\course{\href{https://canvas.uchicago.edu/courses/56880}{CMSC 27200 - Spring 2024}}
+%-------------------------------------
+
+\documentclass[10pt]{article}
+\usepackage[colorlinks,urlcolor=blue]{hyperref}
+\usepackage[osf]{mathpazo}
+\usepackage{amsmath,amsfonts,graphicx}
+\usepackage{latexsym}
+\usepackage{subfig}
+\usepackage{algpseudocode}
+\usepackage[shortlabels]{enumitem}
+\usepackage{algorithm}
+\usepackage{listings}
+%\usepackage[top=1in,bottom=1.4in,left=1.5in,right=1.5in,centering]{geometry}
+\usepackage{fullpage}
+\usepackage{color}
+\definecolor{mdb}{rgb}{0.3,0.02,0.02} 
+\definecolor{cit}{rgb}{0.05,0.2,0.45}
+\usepackage{wrapfig}
+%\pagestyle{myheadings}
+\markboth{\yourname}{\yourname}
+
+\thispagestyle{empty}
+
+\newenvironment{proof}{\par\noindent{\it Proof.}\hspace*{1em}}{$\Box$\bigskip}
+\newcommand{\qed}{$\Box$}
+\newcommand{\alg}[1]{\mathsf{#1}}
+\newcommand{\handout}{
+   \renewcommand{\thepage}{H\hnumber-\arabic{page}}
+   \noindent
+   \begin{center}
+      \vbox{
+    \hbox to \columnwidth {\sc{\course} --- \prof \hfill}
+    \vspace{-2mm}
+    \hbox to \columnwidth {\sc due \MakeLowercase{\duedate} \duelocation\hfill {\Huge\color{mdb}H\hnumber.\yourname}}
+      }
+   \end{center}
+   \vspace*{2mm}
+}
+\newcommand{\solution}[1]{
+\vspace{2mm}
+
+\noindent Collaborators: Zack Hassman
+
+\vspace{5mm}
+
+\medskip\noindent{\color{cit}\textbf{Solution:} #1}}
+
+\newcommand{\bit}[1]{\{0,1\}^{ #1 }}
+\newcommand{\extraspace}{\medskip\noindent{\color{cit} Extra space for your solution}\newpage}
+%\dontprintsemicolon
+%\linesnumbered=
+\newtheorem{problem}{\sc\color{cit}Problem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}{Definition}
+\newtheorem{claim}{Claim}
+
+
+\begin{document}
+\handout
+\begin{itemize}
+\item The assignment is due at Gradescope on \duedate.
+
+\item A LaTeX template will be provided for each homework. You are strongly encouraged to type your homework into this template using \LaTeX.  If you are writing by hand, please fill in the solutions in this template, inserting additional sheets as necessary. This will help facilitate the grading.
+
+\item You are permitted to discuss the problems with up to 2 other students in the class (per problem); however, {\em you must write up your own solutions, in your own words}. Do not submit anything you cannot explain. If you do collaborate with any of the other students on any problem, please list all your collaborators in the appropriate spaces.
+
+\item Similarly, please list any other source you have used for each problem, including other textbooks or websites.
+
+\item {\em Show your work.} Answers without justification will be given little credit.
+
+\item Your homework is \textit{resubmittable}. Please refer to the course syllabus on Canvas for a more detailed description of this. For any problem that you have not changed from your last submission, please make sure to indicate this in your submission to help our graders grade faster. 
+
+\end{itemize}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\begin{problem}[Recursive functions]
+
+For the following recursive functions, compute their $O(\cdot)$ complexity:
+\begin{enumerate}
+    \item $T(n) = 7 T(n/2) + 4n$
+    \item $T(n) = 16 T(n/4) + n^2$
+    \item $T(n) = 2 T(n/4) + \sqrt{n}$
+    \item $T(n) = T(n - 1) + n^2$
+\end{enumerate}
+\end{problem}
+\solution{
+    \begin{enumerate}
+        \item $\displaystyle O(\quad \sum_{i=0}^{log_2 n}(\frac{7}{2})^i n \quad) = O(n^{\log_2 7})$
+        \item $\displaystyle O(\quad \sum_{i=0}^{log_4 n}(\frac{16}{4^2})^i n^2\quad) = O(n^2 \log n)$
+        \item $\displaystyle O(\quad \sum_{i=0}^{log_4 n}(\frac{2}{4^{1/2}})^i \sqrt{n}\quad) = O( \sqrt{n} \log n )$
+        \item $\displaystyle O(\quad \sum_{i=0}^{n}(\frac{1}{4^2})^i n^2 \quad) = O(n^3)$
+    \end{enumerate}
+}
+
+\newpage
+
+\iffalse
+\begin{problem}[The Billy Problem]
+This problem is due to Professor Drucker who was inspired by The Family Circus.\\  
+\\
+Billy, a 7-year-old kid, is let loose in a park, which is an $N$-by-$N$ grid of cells $(x, y) \in [N]\times [N]$. His starting location is the Southwest corner $(x, y) = (1, 1)$. He takes a walk in the park, always moving from a square to an adjacent square in one of the four cardinal directions.  He never leaves the park, and never visits the same square twice.  Eventually he ends up napping somewhere in the park. \\
+
+We are given the $N$-by-$N$ matrix $A$, whose entries are 
+\begin{enumerate}
+\item $A[i, j] = *$ if Billy never visits cell $(i, j)$.
+\item $A[i, j] = \uparrow$ if Billy visited cell $(i, j)$ and departed upwards.
+\item $A[i, j] = \leftarrow$ if Billy visited cell $(i, j)$ and departed in the leftwards direction.
+\item $A[i, j] = \downarrow$ if Billy visited cell $(i, j)$ and departed downwards.
+\item $A[i, j] = \rightarrow$ if Billy visited cell $(i, j)$ and departed in the rightwards direction.
+\item $A[i, j] = BILLY$ if Billy is napping in cell $(i, j)$.
+\end{enumerate}
+
+For example, $A[1, 1]$ will contain an arrow indicating the first step Billy took after entering the park (unless he stopped to nap immediately).
+
+Give an algorithm (either with pseudocode or in words) that makes only $O(N)$ queries to the matrix $A$, and locates Billy. In other words, your algorithm should only read $O(N)$ entries of the matrix. You should give a sketch that your algorithm works and only makes $O(N)$ queries, but you do not need to give a rigorous proof. You can get an $S$ for an algorithm which uses $O(N \log N)$ queries.
+
+\end{problem}
+
+\solution{
+Your solution here.
+}
+\section{Tracking Drones (15 points)}
+
+With drones becoming more prominent, it is useful to be able to quickly find their position. However your drone is no longer transmitting GPS data, but it connects to cellular towers as it moves. You cannot ask the cellular tower network where your drone is, but each cellular tower will answer you if your drone is still connected to it \textbf{or} tell you to which tower and at what time it was handed over. 
+
+The cellular towers are arranged in an $N$-by-$N$ grid of cells $(x, y) \in [N]\times [N]$. The drone's initial position is in the southwest corner $(x, y) = (1, 1)$ of the grid. The drone will stay in the grid, always moving from a square to an adjacent square in one of the four cardinal directions. It never leaves the grid, and never visits the same cell twice.
+
+You are given a direction matrix $A$ and a time matrix $T$, both of size $N$-by-$N$. The entries in $A$ are as follows:
+\begin{itemize}
+\item $A[i, j] = \ *$ if the drone never visits cell $(i, j)$.
+\item $A[i, j] = \ \uparrow$ if the drone visited cell $(i, j)$ and departed upward. 
+\item $A[i, j] = \  \leftarrow$ if the drone visited cell $(i, j)$ and departed in the leftward direction.  
+\item $A[i, j] = \ \downarrow$ if the drone visited cell $(i, j)$ and departed downward. 
+\item $A[i, j] = \ \rightarrow$ if the drone visited cell $(i, j)$ and departed in the rightward direction.  
+\item $A[i, j] = \ \texttt{DRONE} $ if the drone is connected to the tower in cell $(i, j)$.
+\end{itemize}
+
+The entries in $T$ are as follows:
+
+\begin{itemize}
+    \item $T[i,j] = \ -1$ if the drone has never left cell $(i,j)$
+    \item $T[i,j] = t_{i,j}$ otherwise, where $t_{i,j}$ is the time that the drone left cell $(i,j)$
+\end{itemize}
+
+For example, if the drone leaves the southwest corner of the grid, $A[1, 1]$ will contain an arrow indicating which cellular tower the drone was handed over to. $T[1,1]$ will contain the timestamp of when the drone was handed to the new cellular tower. 
+
+You may assume times are represented by integers and are comparable using standard operators (e.g., $\leq$, $\geq$, etc). 
+
+
+\begin{enumerate}[(a)]
+    \item (6 points) Write \textbf{pseudocode} for an algorithm that makes only $O(N)$ queries to the matrices $A$ and $T$ and locates the drone. In other words, your algorithm should only read $O(N)$ entries of the matrix. (A maximum of 2 points will be given for correct $O(N \log N)$ algorithms.)
+    \item (6 points) Prove the correctness of your algorithm. State your base case and state the invariant that your algorithm maintains. 
+    \item (3 points) Argue that your algorithm makes $O(N)$ queries.
+    % \item (6 points) Give a sketch that your algorithm works and only makes $O(N)$ queries, but you do not need to give a rigorous proof.
+    % \item (1 point) Now assume that the clocks in the cellular towers are all inaccurate. Without using the time information, describe briefly how you can still find the position of the drone in $O(N)$ queries.
+\end{enumerate} 
+
+(\textit{Credit}: This problem is due to Professor Andrew Drucker who was inspired by The Family Circus.)
+
+\newpage
+\extraspace
+\fi
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\begin{problem}[Mafia Game]
+A group of $n > 2$ friends are playing a game of Mafia. In each round of this game, the $n$ players can select any subset of the $n$ players to interrogate. Some number of the players are \textbf{Mafia}, and they will be revealed during the interrogation.
+
+Denote by $P = \{P_1, P_2, \ldots P_n\}$ the set of $n$ players in the game. We may represent the interrogation as a function $I$ that takes as input any non-empty subset of $P$ and outputs a boolean in $\{\textsc{True}, \textsc{False}\}$ indicating whether the subset contains a Mafia member. More formally, if $P_i$ is Mafia, then $P_i \in P' \implies I(P') = \textsc{True}$.  
+\begin{enumerate}[(a)]
+    \item Suppose that there is only one Mafia member among the $n$. Provide a description (in words) of a divide-and-conquer procedure that allows the players to identify the mafia member in $O(\log n)$ interrogations. 
+    \item Provide a proof sketch that this procedure always finds the Mafia. 
+    \item Provide a proof sketch that your procedure from part (a) only takes $O(\log n)$ tests.
+    \item Provide a formal proof that no procedure can guarantee finding the Mafia member in less than $\lfloor \log_2 n \rfloor$ interrogations. 
+    \item (Bonus - Just to think about, no need to submit anything.) Suppose the Mafia member knows your procedure for picking subsets, and can successfully lie in $k$ interrogations (for some constant $k$). Obviously, if we just run each interrogation from (a) $k+1$ times, we'll find the Mafia. That seems redundant though. Is there a way for us to guarantee that we'll identify the Mafia in less than $(k+1)\log n$ interrogations? 
+\end{enumerate}
+Suppose instead that there are two Mafia in the group of $n$ players. Furthermore, they can cover each other's tracks in the interrogation: if both are in the same interrogation, then the players won't be able to detect that they are Mafia!
+
+Formally, there exist two players $P_i$ and $P_j$ with $i \neq j$ such that
+    \[
+    I(P') = 
+    \begin{cases}
+        \textsc{False} & \text{If neither $P_i$ nor $P_j$ are in $P'$}, \\
+        \textsc{True} & \text{If exactly one of $P_i$ or $P_j$ are in $P'$}, \\
+        \textsc{False} & \text{If both $P_i$ and $P_j$ are in $P'$}. \\
+    \end{cases}
+    \]
+\begin{enumerate}
+    \item[(f)] Describe a procedure for selecting subsets to interrogate that allows the players to identify both Mafia in $O(\log n)$ interrogations. You may invoke your algorithm from part (a).
+ 
+    \item[(g)] Sketch a proof that your procedure for part (d) is correct.
+    \item[(h)] Sketch a proof that your procedure from part (d) takes $O(\log n)$ interrogations.
+\end{enumerate}
+\end{problem}
+
+\solution{
+    \begin{enumerate}[(a)]
+        \item {
+            Repeatedly divide the set of players in two halves. 
+            Use one call to $I$ to determine which half set has the Mafia member, 
+            and repeat the procedure on that half. 
+
+            If in the current iteration there is only one player in the set, 
+            then that player is the Mafia member. 
+        }
+        \item {
+            \begin{proof}
+                
+                We use induction on $n$, the number of players. 
+
+                In the base case, if $n=1$ then the procedure correctly says that one player is the Mafia member
+                
+                In the inductive case, we assume that the procedure works for any set of $k > 1$ players. 
+                Then if given a set of $n = k + 1$ players, 
+                the procedure divides $P$ into two halves, 
+                which both contain $\leq k$ players. 
+                Using $I$ chooses the set containing the Mafia member. 
+                Applying the procedure recursively to that set finds the Mafia member. 
+
+            \end{proof}
+        }
+        \item {
+            \begin{proof}
+
+                The procedure's runtime can be expressed as:
+                \[
+                    T(n) = 
+                    \begin{cases}
+                        \textsc{$T(\frac{n}{2}) + O(1)$} & \text{$n > 1$} \\
+                        \textsc{$1$} & \text{$n = 1$}
+                    \end{cases}
+                \]
+
+                By the Master theorem, the procedure is thus $O( log_2 n )$
+
+            \end{proof}
+        }
+        \item {
+            \begin{proof}
+
+                Given a set of player $P$ of size $n$, 
+                there are $n$ possible players that may be the Mafia member. 
+
+                The use of $I$ can prune at most $\lceil \frac{n}{2} \rceil$ possible positions. 
+
+                Therefore $O(log_2 n)$ comparisons must be made to prune the possible members to 1. 
+
+            \end{proof}
+        }
+        \item[(f)] {
+            Assign each player a unique ID from $1$ to $n$. 
+            We represent these IDs in binary. 
+
+            Then for each bit position $i$, 
+            run $I$ on the set of players with IDs whose $i$th bit is $1$ 
+            (ex. the second bit of ID=$01000$ is 1). 
+
+            If $I$ returns True, call (a) once on that set, 
+            and once on the set of all other players. 
+
+            If $I$ returns False, continue to the next bit position. 
+        }
+
+        \item[(g)] {
+            \begin{proof}
+                
+                Because the IDs are unique, 
+                the two Mafia members \textbf{must} have different digits at some bit position. 
+                $I$ is therefore guaranteed to return True at that position as a result of the partitioning process described. 
+
+                $I$ only returns True if there is one Mafia member. 
+                So calling (a) on each partition is guaranteed to find the Mafia members. 
+                
+            \end{proof}
+        }
+        \item[(h)] {
+            \begin{proof}
+
+                It takes $\log n$ bits to uniquely ID all $n$ players. 
+
+                Therefore there are at most $\log n$ positions to go through. 
+                At each position $I$ is called once. 
+
+                After the Mafia members are separated, (a) is called twice. 
+                Recall (a) is $O(\log n)$ as well. 
+
+                Thus, in total the procedure is $O(\log n)$. 
+
+            \end{proof}
+        }
+    \end{enumerate}
+}
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\begin{problem}[Tilings] 
+Consider a square $N \times N$ grid where $N = 2^k$ is a power of $2$, and imagine placing $L$-shaped domino pieces of area 3 on this grid. A \textbf{tiling} of the grid is a way of placing the pieces so that no two pieces overlap and every single grid cell is covered. In this problem you will be tasked with describing a procedure (an algorithm!) to cover the grid using only these $L$-shaped pieces. In the input grid, one square is excluded, and doesn't need to be covered by any domino piece.
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.7]{tiling.png}
+    \caption{You are given $L$-shaped domino pieces (in light green) and a grid, and you are asked to find a way to tile the entire grid (excluding the black square). An example of a valid tiling is shown on the right.}
+    \label{fig:my_label}
+\end{figure}
+\noindent 
+\begin{enumerate}
+    \item[(a)] Verify that, if $N = 2^k$, then $N^2 \equiv 1 \operatorname{ mod } 3$, and explain why this condition is necessary (while a priori not sufficient) for a valid tiling to exist.
+    \item[(b)] Describe a procedure that allows you to find a valid tiling, given any input grid as above. You may give pseudocode but you are not required to.
+    \item[(c)] Sketch a proof that your procedure works correctly.
+\end{enumerate}
+Note: every domino piece has the shape described above and covers exactly three squares, every input grid has exactly one excluded (black) square, but the location of the black square may change between input grids.
+\end{problem}
+\begin{solution}
+
+    \begin{enumerate}[(a)]
+        \item {
+            $N = 2^k 
+            \quad \implies \quad 
+            N \equiv_3 4^{k/2} \mod 3 
+            \quad \implies  \quad 
+            N \equiv_3 (4 \mod 3)^{k/2} \mod 3
+            \quad \implies  \quad 
+            N \equiv_3 1
+            $
+
+            The dominoes have area 3. 
+            The total area of the grid is $2^k$. 
+            We want to ensure one tile is left over after tiling the grid. 
+        }
+
+        \item {
+
+            A recursive tiling algorithm:
+
+            \begin{algorithm}
+                \caption{$tile(k)$}
+                \begin{algorithmic}[1]
+                    \Statex \textbf{Input:} $k \in \mathbb{N}$
+                    \Statex \textbf{Output:} Tiled $2^k \times 2^k$ grid
+                    
+                    \State $G \gets 2^k \times 2^k$ grid
+
+                    \State \textbf{if $k=1$} place tile anywhere in $G$, \textbf{return $G$}
+
+                    \State $G_{1/4} \gets tile(k-1)$
+                    \State Place 3 copies of $G_{1/4}$ in 3 quadrants of $G$ such that their empty squares are in the grid center
+                    \State Place a copy of $G_{1/4}$ in $G$ such that its empty square is on the grid corner
+                    \State Fill the 3 empty squares in the middle with a domino
+                    \State \textbf{return $G$}
+
+                \end{algorithmic}
+            \end{algorithm}
+        
+        }
+        
+        \item {
+            \begin{proof}
+
+                We use induction on $k$. 
+
+                In the base case, if $k=1$, any placing of the domino is a valid tiling, 
+                and leaves a grid corner empty. The procedure does this. 
+
+                In the inductive case, we assume that the procedure can correctly tile a $k-1$ grid leaving an empty corner. 
+                Then in the case of a $k$ grid, each quadrant is a $k-1$ grid. 
+                The procedure can compute the tiling of the $k-1$ grid by the inductive hypothesis. 
+                We can arrange $3$ such tilings such that all the empty corners are in the middle of the $k$ grid. 
+                Then we can fill these empty squares with one domino. 
+                One final $k-1$ grid can be put in the remaining quadrant to complete the $k$ grid tiling. 
+                
+            \end{proof}
+            \begin{figure}[H]
+                \centering
+                \includegraphics[scale=0.5]{3c.JPG}
+            \end{figure}
+        }
+
+    \end{enumerate}
+
+\end{solution}
+
+\newpage
+
+\newpage
+\begin{problem}[Benchmarking Insertion Sort]
+
+After reading the correctness proof of insertion sort during discussion for week 1, Konstantinos is wondering how many times line 6 is performed for a given array. He could simply count, but it took too long for big arrays, so instead he wants you to write a faster algorithm to compute that result.
+
+\begin{algorithm}
+    \caption{Insertion Sort} 
+    \begin{algorithmic}[1]
+    \Statex \textbf{Input:} Array $A$
+    \Statex \textbf{Output:} Array $A$ 
+    
+    \For{$j=2$ to $A$.length} 
+        \State $key$ $=$ $A[j]$
+        \State // Insert $A[j]$ into the sorted sequence $A[1..j-1]$.
+        \State $i = j-1$
+        \While{$i > 0$ and $A[i] > key$}
+            \State $A[i+1] = A[i]$
+            \State $i = i - 1$
+        \EndWhile
+        \State $A[i+1]$ $=$ $key$
+    \EndFor
+    \State \textbf{Return} $A$
+    \end{algorithmic}
+\end{algorithm}
+\noindent{\bf Input:} The first line contains a single integer $N$, the size of the array. In the next line there are $N$ numbers, from $1$ to $N$.\\
+\\
+{\bf Output:} A single number, how many times line 6 of insertion sort would be executed on this array. \\
+\\
+{\bf Submission:} In \href{https://www.gradescope.com/courses/753885/}{Gradescope} upload a single Python file. Skeleton code to get you started can be found on Canvas. \\
+\\
+{\bf Testing:} Test case inputs and outputs are provided \href{https://uchicago.box.com/s/ebv1r1sjdrc0hn6nawzbuo6wv5ywq44o}{here}. To compare your output to the given output you can use the following command on Linux and MacOS Terminal
+\begin{verbatim}
+pypy3 benchmarking_insertion.py <testcases/input01.txt | diff testcases/output01.txt -
+\end{verbatim}
+{\bf Limits:}\\
+$N \leq 1.000.000$\\
+$T \leq 2s$
+\end{problem}
+\begin{minipage}[t]{.20\textwidth}
+Sample Input
+\begin{verbatim}
+5
+2 5 3 4 1
+\end{verbatim}
+\end{minipage}% This must go next to `\end{minipage}`
+\begin{minipage}[t]{.20\textwidth}
+Sample Output
+\begin{verbatim}
+6
+\end{verbatim}
+\end{minipage}
+
+\vspace{5mm}
+\end{document}

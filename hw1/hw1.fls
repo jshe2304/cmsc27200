@@ -262,6 +262,13 @@ INPUT /usr/local/texlive/2024/texmf-dist/fonts/vf/public/mathpazo/zplmr7y.vf
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmsy10.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/vf/adobe/palatino/pplr7t.vf
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/adobe/palatino/pplr8r.tfm
+INPUT /usr/local/texlive/2024/texmf-dist/fonts/vf/public/mathpazo/zplmr7m.vf
+INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/mathpazo/fplmri.tfm
+INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmmi10.tfm
+INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/adobe/palatino/pplri8r.tfm
+INPUT /usr/local/texlive/2024/texmf-dist/fonts/vf/public/mathpazo/zplmr7t.vf
+INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/mathpazo/fplmr.tfm
+INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmr10.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/vf/public/mathpazo/zplmr7y.vf
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmsy10.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/psnfss/ufplmbb.fd
@@ -270,10 +277,6 @@ INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/psnfss/ufplmbb.fd
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/mathpazo/fplmbb.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/mathpazo/fplmbb.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/mathpazo/fplmbb.tfm
-INPUT /usr/local/texlive/2024/texmf-dist/fonts/vf/public/mathpazo/zplmr7m.vf
-INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/mathpazo/fplmri.tfm
-INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmmi10.tfm
-INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/adobe/palatino/pplri8r.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/adobe/palatino/pplr9o.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/vf/adobe/palatino/pplr9o.vf
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/mathpazo/fplmr.tfm
@@ -281,7 +284,6 @@ INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/adobe/palatino/pplr8r.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/adobe/palatino/pplrc8r.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/vf/public/mathpazo/zplmr7y.vf
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmsy10.tfm
-INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/mathpazo/fplmr.tfm
 INPUT hw1.aux
 INPUT ./hw1.out
 INPUT ./hw1.out

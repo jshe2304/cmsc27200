@@ -1,0 +1,299 @@
+%---------
+% place your email id between the braces so that your homework has a name
+\def\yourname{}
+% -----------------------------------------------------
+\def\duedate{3/29/24}
+\def\duelocation{via \href{https://www.gradescope.com/courses/753885}{Gradescope}}
+\def\hnumber{2}
+\def\prof{Lorenzo Orecchia}
+\def\course{\href{https://canvas.uchicago.edu/courses/56880}{CMSC 27200 - Spring 2024}}
+%-------------------------------------
+
+\documentclass[10pt]{article}
+\usepackage[colorlinks,urlcolor=blue]{hyperref}
+\usepackage[osf]{mathpazo}
+\usepackage{amsmath,amsfonts,graphicx}
+\usepackage{latexsym}
+\usepackage{subfig}
+\usepackage{algpseudocode}
+\usepackage[shortlabels]{enumitem}
+\usepackage{algorithm}
+\usepackage{listings}
+\usepackage{multirow}
+\usepackage{diagbox}
+\usepackage{makecell}
+%\usepackage[top=1in,bottom=1.4in,left=1.5in,right=1.5in,centering]{geometry}
+\usepackage{fullpage}
+\usepackage{color}
+\definecolor{mdb}{rgb}{0.3,0.02,0.02} 
+\definecolor{cit}{rgb}{0.05,0.2,0.45} 
+%\pagestyle{myheadings}
+\markboth{\yourname}{\yourname}
+\setlength\parindent{0pt}
+
+\thispagestyle{empty}
+
+\newenvironment{proof}{\par\noindent{\it Proof.}\hspace*{1em}}{$\Box$\bigskip}
+\newcommand{\qed}{$\Box$}
+\newcommand{\alg}[1]{\mathsf{#1}}
+\newcommand{\handout}{
+   \renewcommand{\thepage}{H\hnumber-\arabic{page}}
+   \noindent
+   \begin{center}
+      \vbox{
+    \hbox to \columnwidth {\sc{\course} --- \prof \hfill}
+    \vspace{-2mm}
+    \hbox to \columnwidth {\sc due \MakeLowercase{\duedate} \duelocation\hfill {\Huge\color{mdb}H\hnumber.\yourname}}
+      }
+   \end{center}
+   \vspace*{2mm}
+}
+\newcommand{\solution}[1]{
+\vspace{2mm}
+
+\noindent Collaborators: Zack Hassman
+
+\vspace{5mm}
+
+\medskip\noindent{\color{cit}\textbf{Solution:} #1}}
+
+\newcommand{\bit}[1]{\{0,1\}^{ #1 }}
+\newcommand{\extraspace}{\medskip\noindent{\color{cit} Extra space for your solution}\newpage}
+%\dontprintsemicolon
+%\linesnumbered
+\newtheorem{problem}{\sc\color{cit}Problem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}{Definition}
+\newtheorem{claim}{Claim}
+
+
+\begin{document}
+
+\handout
+\begin{itemize}
+
+\item The assignment is due at Gradescope on \duedate.
+
+\item A LaTeX template will be provided for each homework. You are strongly encouraged to type your homework into this template using \LaTeX.  If you are writing by hand, please fill in the solutions in this template, inserting additional sheets as necessary. This will help facilitate the grading.
+
+\item You are permitted to discuss the problems with up to 2 other students in the class (per problem); however, {\em you must write up your own solutions, in your own words}. Do not submit anything you cannot explain. If you do collaborate with any of the other students on any problem, please list all your collaborators in the appropriate spaces.
+
+\item Similarly, please list any other source you have used for each problem, including other textbooks or websites.
+
+\item {\em Show your work.} Answers without justification will be given little credit.
+
+\item Your homework is \textit{resubmittable}. Please refer to the course syllabus on Canvas for a more detailed description of this. For any problem that you have not changed from your last submission, please make sure to indicate this in your submission to help our graders grade faster. 
+
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{problem} Consider the recursive version of the gcd algorithm given in class and in the DPV textbook. 
+
+\begin{enumerate}
+    \item How much space, i.e., memory allocation, does this algorithm require as stated?
+    \item Write pseudocode for an iterative version of the algorithm that reduces the space requirement to $O(n)$ bits.
+    \end{enumerate}
+\end{problem}
+\solution{
+
+    \begin{enumerate}
+        \item {
+            $O(n^2)$
+
+            There are at most $n$ recursive calls
+
+            Each call stores an $n$-bit integer $a$, and an $m$-bit integer b, where $m \leq n$. 
+        }
+        \item {
+            Iterative algorithm to compute $gcd(a, b)$ in linear time:
+            \begin{algorithm}
+                \begin{algorithmic}[1]
+                    \Statex \textbf{$gcd(a, b)$}
+                    \Statex \textbf{Input:} $a, b \in \mathbb{N}, a \geq b \geq 0$
+                    \Statex \textbf{Output:} $d \in \mathbb{N}$
+
+                    \While{$b \neq 0$}
+                        \State $t \gets a$
+                        \State $a \gets b$
+                        \State $b \gets t \mod b$
+
+                    \EndWhile
+
+                    \State \textbf{return} $a$
+
+                \end{algorithmic}
+            \end{algorithm}
+        }
+    \end{enumerate}
+
+}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}
+Let $F_i$ be the $i$th Fibonacci number.  Consider the execution of the recursive $\gcd$ algorithm on inputs $(a,b)$ with $a > b \geq 0.$ Show that if $b \leq F_{k}$ for some $k$, then the algorithm makes at most $k$ recursive calls.
+\end{problem}
+\solution{
+    \begin{proof}
+
+        We use strong induction on $k$. 
+
+        \textbf{Base Case}
+        
+        If $k=0$ then $b \leq 0$ so the algorithm returns $a$ after $0$ recursive calls. 
+
+        \textbf{Inductive Case}
+
+        Suppose the algorithm takes at most $k-1$ recursive calls for all $b \leq F_{k-1}$. 
+
+        Consider $b \leq F_k$. 
+        The algorithm makes a recursive call to $gcd(b, a \mod b)$, 
+        which makes its own recursive call to $gcd(a \mod b, b \mod (a \mod b))$. 
+
+        Now, $[a \mod b] + [b \mod (a \mod b)] \leq b$. 
+        Since $b \leq F_k = F_{k-1} + F_{k-2}$, either $a \mod b \leq F_{k-1}$ or $b \mod (a \mod b) \leq F_{k-2}$
+
+        If $a \mod b \leq F_{k-1}$, then $gcd(b, a \mod b)$ takes at most $k-1$ calls by the inductive hypothesis. 
+        So $gcd(a, b)$ takes $k-1+1 = k$ calls. 
+
+        If $b \mod (a \mod b) \leq F_{k-2}$ then $gcd(a \mod b, b \mod (a \mod b))$ takes $k-2$ calls by the inductive hypothesis. 
+        So $gcd(a, b)$ takes $k-2+2 = k$ calls. 
+
+    \end{proof}
+}
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{problem}[Programming: Probabilistic Testing and Primality]
+
+Follow this \href{https://colab.research.google.com/drive/1J1VbRDhsAPRtdg48Xd5mBn1SsuQSFgLl?usp=sharing}{Google Colab template link} to implement Fermat primality testing. \textbf{Do not attempt to edit the linked file. Create your own copy instead by clicking File $\rightarrow$ Save a copy in Drive}. When you have completed it, download it as a Jupyter Notebook and submit it to the appropriate Gradescope assignment. 
+\end{problem}
+\solution{See Gradescope}
+
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{problem}
+Wilson’s theorem says that a number N is prime if and only if 
+\[
+    (N-1)!\equiv -1 (\operatorname{mod} N).
+\]
+In this problem, we will walk through writing a formal proof for this theorem. 
+\begin{enumerate}
+    \item[(a)] We can prove Wilson's Theorem by proving three lemmas:
+    \lemma{If $p$ is prime, only $1$ and $p-1$ are their own inverses modulo $p$.}
+    \lemma{If $p$ is prime, $(p - 1)! \equiv -1 (\operatorname{mod} p)$.}
+    \lemma{If $(p-1)! \equiv_p -1$ then p is prime. }
+
+    \item[(b)] Provide a proof of Lemma 1. You may use the fact that if $p$ is prime, then we know every number $1 \leq x < p$ is invertible modulo $p$.
+
+    \item[(c)] Provide a proof of Lemma 2 by pairing up multiplicative inverses. You may use the fact that every number $1 \leq x < p$ has a \textbf{unique} inverse modulo $p$. 
+    
+    \item[(d)] Provide a proof of Lemma 3. (Hint: Note that this can only happen if: 
+    \[
+        \operatorname{gcd}(N, (N - 1)!) = 1.
+    \]
+    )
+
+    \item[(e)] We've just shown that Wilson’s theorem is an if-and-only-if condition for primality. Why can't we base a primality test algorithm on Wilson's Theorem? 
+\end{enumerate}
+
+\end{problem}
+
+\solution{
+    \begin{enumerate}
+        \item[(b)] {
+            \begin{proof}
+                
+                $p$ is prime, so all $1 \leq x < p$ is invertible modulo p. 
+                If an $x$ is is own $p$-modular inverse, then we have:
+                \begin{gather*}
+                    x^2 \equiv_p 1
+                    \\
+                    p \mid x^2 - 1
+                    \\
+                    p \mid (x-1)(x+1)
+                \end{gather*}
+                Since $p$ is prime, either $p \mid x \pm 1$ so $x \pm 1 \equiv_p 0$. 
+
+                These correspond to $x = 1$ and $x=p-1$. 
+
+            \end{proof}
+        }
+        \item[(c)] {
+            \begin{proof}
+
+                We claim every number in $\mathbb{Z}_{p}$ has a unique inverse modulo $p$ in $\mathbb{Z}_{p}$. 
+
+                Suppose $x \in \mathbb{Z}_{p}$ has an inverse $x^{-1} \notin \mathbb{Z}_{p}$. 
+                Then:
+                \begin{flalign*}
+                    1 &\equiv_p xx^{-1}
+                    \\
+                    1 &\equiv_p (x (x^{-1} \mod p))
+                \end{flalign*}
+
+                So $x^{-1} \mod p \in \mathbb{Z}_{p}$ is also an inverse. 
+
+                Modular inverses are involutive since $x = (x^{-1})^{-1}$ (mod $p$). 
+                Thus, we can partition $\mathbb{Z}_{p}$ into pairs of inverses, except for $1$ and $p-1$, which are paired with themselves. 
+                
+                Using this fact:
+                
+                \begin{flalign*}
+                    (p-1)! &= 1 \cdot (\prod_{(x, x^{-1}) \in \mathbb{Z}_{p}} x \cdot x^{-1}) \: \cdot (p-1)
+                    \\
+                    (p-1)! &\equiv_p (\prod_{(x, x^{-1}) \in \mathbb{Z}_{p}} (x \cdot x^{-1}) \mod p) \: \cdot ((p-1) \mod p)
+                    \\
+                    (p-1)! &\equiv_p (\prod_{(x, x^{-1}) \in \mathbb{Z}_{p}} 1) \: \cdot (-1)
+                    \\
+                    (p-1)! &\equiv_p (\prod_{(x, x^{-1}) \in \mathbb{Z}_{p}} 1) \: \cdot (-1)
+                    \\
+                    (p-1)! &\equiv_p -1
+                \end{flalign*}
+
+            \end{proof}
+        }
+
+        \item[(d)] {
+            \begin{proof}
+                We claim that $p-1$ is a p-modular inverse of $(p-1)!$. Check that this holds:
+
+                \begin{flalign*}
+                    (p-1)! \cdot (p-1) & \equiv_p ((p-1)! \mod p) \cdot ((p-1) \mod p)
+                    \\
+                    & \equiv_p (-1) \cdot (-1)
+                    \\
+                    & \equiv_p 1
+                \end{flalign*}
+
+                Since $(p-1)!$ is invertible modulo p, $gcd(p, (p-1)!) = 1$. 
+                This implies $p$ is indivisible by $1, \dots, p-1$. Thus $p$ is prime. 
+
+            \end{proof}
+        }
+
+        \item[(e)] {
+            The $(p-1)!$ is intractable. 
+        }
+    \end{enumerate}
+}
+
+
+
+\end{document}

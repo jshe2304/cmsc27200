@@ -1,6 +1,6 @@
 %---------
 % place your email id between the braces so that your homework has a name
-\def\yourname{}
+\def\yourname{jshe}
 % -----------------------------------------------------
 \def\duedate{3/25/2024}
 \def\duelocation{via \href{https://www.gradescope.com/courses/753885}{Gradescope}}
@@ -47,7 +47,7 @@
 \newcommand{\solution}[1]{
 \vspace{2mm}
 
-\noindent Collaborators:
+\noindent Collaborators: Zack Hassman
 
 \vspace{5mm}
 
@@ -116,22 +116,31 @@
     \item $f(m,n) = (n+m)^2$ and $g(m,n) = n^2 + m^2$
 \end{enumerate}
 
+
+
 \solution{
     \begin{enumerate}[(a)]
         \item {
-            $ f = O(g) $ \\
+            $ f = \Theta(g) $ \\
             
             $ f(n) = \sum_{i=1}^{n} i^k $ \\
-            $ g(n) = \sum_{i=1}^{n} n^k $ \\
-            In $f(n)$, $i \leq n$. 
+            $ 1 \cdot g(n) = \sum_{i=1}^{n} n^k $ \\
+            $f(n)$ is $O(g)$
+
+            $f(n) \geq \sum_{i={n/2}}^{n}i^k \geq (\frac{n}{2})^k \cdot \frac{n}{2} = \frac{n^{k+1}}{2^{k+1}}$ \\
+            $f(n)$ is $\Omega(n^{k+1})$
         }
         \item {
-            $ f = O(g) $ \\
+            $ f = \Theta(g) $ \\
 
-            For some $c$, \\
+            For some $c$,
+
             $ f(n) = \sum_{i=1}^{n} i^{c\log n} $ \\
-            $ g(n) = \sum_{i=1}^{n} n^{c\log n} $ \\
-            In $f(n)$, $i \leq n$. 
+            $ 1 \cdot g(n) = \sum_{i=1}^{n} n^{c\log n} $ \\
+            $f(n)$ is $O(g)$
+
+            $ f(n) \geq (\int_{1}^{n+1} x^{c\log n} dx = \frac{\left(n+1\right)^{c\log n+1}-1}{c\log n+1} )$ \\
+            $f(n)$ is $\Omega(n^{k+1})$
         }
         \item {
             $ f = \Omega(g)$ \\
@@ -155,10 +164,16 @@
             In $f(n)$, $i \leq n$ and $\log$ is monotone. 
         }
         \item {
-            $ f = \Omega(n) $ \\
+            $ f = \Theta(n) $ \\
 
             $ f(m, n) = n^2 + 2mn + m^2 $ \\
-            $ g(m, n) = n^2 + m^2 $ \\
+            $ 1 \cdot g(m, n) = n^2 + m^2 $ \\
+            $f(n)$ is $\Omega(g)$. 
+
+            $n^2 + 2mn + m^2 \leq 2n^2 + 2m^2 $ \\
+            $0 \leq n^2 - 2mn + m^2 $ \\
+            $0 \leq (n - m)^2 $
+            $f(n)$ is $O(g)$. 
         }
 
     \end{enumerate}
